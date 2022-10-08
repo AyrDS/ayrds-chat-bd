@@ -1,8 +1,8 @@
-const express = require('express');
+const path = require('path');
 const http = require('http');
+const express = require('express');
 const cors = require('cors');
 const socketio = require('socket.io');
-const path = require('path');
 const Sockets = require('./socketsModel');
 const dbConnection = require('../database/config');
 
@@ -21,7 +21,11 @@ class Server {
 
    middlewares() {
       // this.app.use(express.static(path.resolve(__dirname, '../public')));
+      this.app.use(express.json());
+
       this.app.use(cors());
+
+      this.app.use('/api/login', require('../routes/authRouter'));
    }
 
    socketConfig() {
@@ -34,8 +38,6 @@ class Server {
       this.socketConfig();
 
       this.app.get('/', (req, res) => {
-         console.log('LA PUTA MADRE LOCO RENDERIZATE');
-         // res.sendFile(path.resolve(__dirname, '../public/index.html'));
          res.sendFile(path.join(__dirname, '..', '/public/index.html'))
       })
 
