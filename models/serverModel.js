@@ -26,6 +26,7 @@ class Server {
       this.app.use(cors());
 
       this.app.use('/api/login', require('../routes/authRouter'));
+      this.app.use('/api/messages', require('../routes/messagesRouter'));
    }
 
    socketConfig() {
