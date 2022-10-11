@@ -13,7 +13,7 @@ const getChat = async (req, res) => {
          { from: msgFrom, to: myUid },
       ]
    })
-      .sort({ createdAt: 'desc' })
+      .sort({ createdAt: 'asc' })
       .limit(30);
 
 

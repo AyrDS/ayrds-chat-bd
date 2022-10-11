@@ -5,7 +5,6 @@ const validateJWT = (req, res, next) => {
 
    try {
       const token = extractToken(req);
-      console.log(req.headers);
       if (!token) {
          return res.status(401).json({
             ok: false,
